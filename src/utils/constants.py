@@ -1,4 +1,3 @@
-from colorama import Fore
 from utils.states import GameState, PlayerState
 
 COLOR_DICT = {

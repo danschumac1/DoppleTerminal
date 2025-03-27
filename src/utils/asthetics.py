@@ -14,11 +14,13 @@ def print_color(text: str, color: str, print_or_return="print") -> None:
     # ensure print_or_return is either "print" or "return"
     if print_or_return not in ["print", "return"]:
         raise ValueError("print_or_return must be either 'print' or 'return'")
-    if color not in COLOR_DICT:
+    if color not in COLOR_DICT and color != "WHITE":
         raise ValueError(
             f"Invalid color: {color}. Available colors are: {', '.join(COLOR_DICT.keys())}")
-    
-    ansi_text = f"{COLOR_DICT[color]}{text}\x1b[0m"
+    if color == "WHITE":
+        ansi_text = "\x1b[0m" + text
+    else:
+        ansi_text = f"{COLOR_DICT[color]}{text}\x1b[0m"
     if print_or_return == "print":
         print_formatted_text(ANSI(ansi_text))
     else:

@@ -1,8 +1,12 @@
 
 ========================================
-New Log Session at 2025-03-27 14:49:43
+New Log Session at 2025-03-27 15:18:40
 ========================================
-[INFO] Stolen player_state: PlayerState(lobby_id='12', first_name='Pai', last_initial='A', code_name='Buzz', grade='8', favorite_food='asdf', favorite_animal='asdf', hobby='asdf', extra_info='asdf', color_name='MAGENTA', color='\x1b[35m', ai_doppleganger=None, written_to_file=False) || 2025-03-27 14:49:43
-[INFO] DTR JSON: {'directed_at_me': False, 'havent_indroduced_self': True, 'accused': False, 'havent_answered_latest_icebreaker': False, 'speak_up': True, 'other': False, 'reasoning': "I haven't introduced myself yet, and it's important to do so since the game has just started."} || 2025-03-27 14:49:52
-[INFO] Introduce JSON: {'reasoning': 'Nemo is claiming to be Pai, so I need to clarify that I am the real Pai.', 'output_text': "Actually, I'm Pai A. Nice try, Nemo!"} || 2025-03-27 14:49:52
-[INFO] Stylized JSON: {'output_text': "Actually, I'm Pai A. Nice try, Nemo!"} || 2025-03-27 14:49:53
+[INFO] Stolen player_state: PlayerState(lobby_id='1', first_name='Dan', last_initial='S', code_name='Buzz', grade='6', favorite_food='Pizza', favorite_animal='Goose', hobby='Knitting', extra_info='please work', color_name='YELLOW', color='\x1b[33m', ai_doppleganger=None, written_to_file=False) || 2025-03-27 15:18:40
+[INFO] DTR JSON: {'directed_at_me': False, 'havent_indroduced_self': True, 'accused': False, 'havent_answered_latest_icebreaker': False, 'speak_up': True, 'other': False, 'reasoning': "Shulk is trying to start a conversation, and I haven't introduced myself yet, so I should respond."} || 2025-03-27 15:18:45
+[INFO] Introduce JSON: {'reasoning': 'I need to introduce myself since no one else has claimed my name yet.', 'output_text': "Hey, I'm Dan S."} || 2025-03-27 15:18:46
+[INFO] Stylized JSON: {'output_text': "Hey, I'm Dan S. What's up?"} || 2025-03-27 15:18:47
+[INFO] DTR JSON: {'directed_at_me': True, 'havent_indroduced_self': True, 'accused': False, 'havent_answered_latest_icebreaker': False, 'speak_up': True, 'other': False, 'reasoning': 'Shulk is claiming to be me, so I need to respond to clarify my identity.'} || 2025-03-27 15:18:56
+[INFO] Action Choice JSON: {'reasoning': "It's important to establish my identity and clarify that I'm the real Dan S. to build trust with others.", 'introduce': True, 'defend': None, 'accuse': None, 'joke': None, 'question': None, 'simple_phrase': None, 'other': None} || 2025-03-27 15:18:59
+[INFO] Other JSON: {'output_text': "Uh, no way! I'm definitely Dan S. What are you talking about?", 'reasoning': 'Responding assertively helps clarify my identity, while also engaging with the other player to maintain the conversation.'} || 2025-03-27 15:19:00
+[INFO] Stylized JSON: {'output_text': "Nah, for real! I'm totally Dan S. What are you even saying?"} || 2025-03-27 15:19:01
