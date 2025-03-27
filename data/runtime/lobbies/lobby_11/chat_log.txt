@@ -1,9 +1,0 @@
-[33m**************************************************[0m
-[33mGAME MASTER: Welcome to Dopplebot! Everyone, please introduce yourselves.[0m
-[33m**************************************************[0m
-Luigi: Hello
-Mulan: Hey, I'm Paige.
-Dark Pit: Hello this is dAn
-Dory: Wait, I'm Dan! That's not how it goes.
-Luigi: what the heck?
-Dark Pit: messages are still aren't refreshing until new ones send

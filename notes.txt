@@ -1,2 +1,1 @@
-~~pip install colorama~~
 pip install prompt_toolkit
