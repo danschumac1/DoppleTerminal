@@ -1,9 +1,0 @@
-
-========================================
-New Log Session at 2025-03-26 21:39:34
-========================================
-[INFO] Stolen player_state: PlayerState(first_name='6', last_initial='6', code_name='Princess Peach', grade='6', lobby_id='default_lobby', game_id='default_game', favorite_food='6', favorite_animal='6', hobby='6', extra_info='6', color_name='BLUE', color='\x1b[34m') || 2025-03-26 21:39:34
-[INFO] DTR JSON: {'directed_at_me': False, 'havent_indroduced_self': True, 'accused': False, 'havent_answered_latest_icebreaker': False, 'speak_up': True, 'other': False, 'reasoning': "I haven't introduced myself yet, and it's important to participate in the introductions."} || 2025-03-26 21:39:43
-[INFO] Introduce JSON: {'reasoning': 'Olaf is claiming to be me, so I need to assert that I am the real one and clarify my identity to the group.', 'output_text': "Wait, I'm Alice, not 6. I'm the real Alice here!"} || 2025-03-26 21:39:44
-[INFO] Stylized JSON: {'output_text': "Wait, I'm Alice, not 6. I'm the real Alice here!"} || 2025-03-26 21:39:44
-[INFO] DTR JSON: {'directed_at_me': False, 'havent_indroduced_self': True, 'accused': False, 'havent_answered_latest_icebreaker': False, 'speak_up': True, 'other': False, 'reasoning': "I haven't introduced myself yet, and it's important to do so while players are introducing themselves."} || 2025-03-26 21:39:54
