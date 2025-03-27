@@ -1,0 +1,62 @@
+[
+  {
+    "lobby_id": "14",
+    "first_name": "Dan",
+    "last_initial": "K",
+    "code_name": "Wasabi",
+    "grade": "8",
+    "favorite_food": "asdf",
+    "favorite_animal": "asdf",
+    "hobby": "asdf",
+    "extra_info": "asdf",
+    "color_name": "BLUE",
+    "color": "\u001b[34m",
+    "ai_doppleganger": null,
+    "written_to_file": true
+  },
+  {
+    "lobby_id": "14",
+    "first_name": "Dan",
+    "last_initial": "K",
+    "code_name": "Kirby",
+    "grade": "8",
+    "favorite_food": "asdf",
+    "favorite_animal": "asdf",
+    "hobby": "asdf",
+    "extra_info": "asdf",
+    "color_name": "MAGENTA",
+    "color": "\u001b[35m",
+    "ai_doppleganger": null,
+    "written_to_file": true
+  },
+  {
+    "lobby_id": "14",
+    "first_name": "Dan",
+    "last_initial": "Q",
+    "code_name": "Ganondorf",
+    "grade": "8",
+    "favorite_food": "asdf",
+    "favorite_animal": "asdf",
+    "hobby": "asdf",
+    "extra_info": "asdf",
+    "color_name": "CYAN",
+    "color": "\u001b[36m",
+    "ai_doppleganger": null,
+    "written_to_file": true
+  },
+  {
+    "lobby_id": "14",
+    "first_name": "Dan",
+    "last_initial": "Q",
+    "code_name": "Frozone",
+    "grade": "8",
+    "favorite_food": "asdf",
+    "favorite_animal": "asdf",
+    "hobby": "asdf",
+    "extra_info": "asdf",
+    "color_name": "RED",
+    "color": "\u001b[31m",
+    "ai_doppleganger": null,
+    "written_to_file": true
+  }
+]

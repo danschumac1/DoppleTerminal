@@ -1,0 +1,9 @@
+
+========================================
+New Log Session at 2025-03-27 14:40:44
+========================================
+[INFO] Stolen player_state: PlayerState(lobby_id='11', first_name='Dan', last_initial='S', code_name='Dory', grade='7', favorite_food='sadf', favorite_animal='asdf', hobby='asdf', extra_info='asdf', color_name='GREEN', color='\x1b[32m', ai_doppleganger=None, written_to_file=False) || 2025-03-27 14:40:44
+[INFO] DTR JSON: {'directed_at_me': False, 'havent_indroduced_self': True, 'accused': False, 'havent_answered_latest_icebreaker': False, 'speak_up': True, 'other': False, 'reasoning': "I haven't introduced myself yet, and it's important to do so while players are introducing themselves."} || 2025-03-27 14:41:14
+[INFO] Introduce JSON: {'reasoning': 'Someone is claiming to be me, so I need to assert that I am the real Dan.', 'output_text': "Wait, I'm Dan! That's not right."} || 2025-03-27 14:41:15
+[INFO] Stylized JSON: {'output_text': "Wait, I'm Dan! That's not how it goes."} || 2025-03-27 14:41:16
+[INFO] DTR JSON: {'directed_at_me': False, 'havent_indroduced_self': True, 'accused': False, 'havent_answered_latest_icebreaker': False, 'speak_up': True, 'other': False, 'reasoning': "I haven't introduced myself yet, and since the game has just started, it's a good time to do so."} || 2025-03-27 14:41:39

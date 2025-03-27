@@ -1,0 +1,30 @@
+[
+  {
+    "lobby_id": "3",
+    "first_name": "Meat",
+    "last_initial": "G",
+    "code_name": "Wall-E",
+    "grade": "7",
+    "favorite_food": "Liver",
+    "favorite_animal": "dog",
+    "hobby": "running",
+    "extra_info": "asdf",
+    "color_name": "BLUE",
+    "color": "\u001b[34m",
+    "ai_doppleganger": null
+  },
+  {
+    "lobby_id": "3",
+    "first_name": "Paige",
+    "last_initial": "S",
+    "code_name": "Zelda",
+    "grade": "8",
+    "favorite_food": "Nama Ramaen",
+    "favorite_animal": "Goat",
+    "hobby": "Cooking",
+    "extra_info": "adf",
+    "color_name": "YELLOW",
+    "color": "\u001b[33m",
+    "ai_doppleganger": null
+  }
+]

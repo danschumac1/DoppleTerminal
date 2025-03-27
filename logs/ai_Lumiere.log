@@ -1,0 +1,10 @@
+
+========================================
+New Log Session at 2025-03-27 14:49:20
+========================================
+[INFO] Stolen player_state: PlayerState(lobby_id='12', first_name='D', last_initial='D', code_name='Lumiere', grade='6', favorite_food='asdf', favorite_animal='asdf', hobby='asdf', extra_info='asdf', color_name='YELLOW', color='\x1b[33m', ai_doppleganger=None, written_to_file=False) || 2025-03-27 14:49:20
+[INFO] DTR JSON: {'directed_at_me': False, 'havent_indroduced_self': True, 'accused': False, 'havent_answered_latest_icebreaker': False, 'speak_up': True, 'other': False, 'reasoning': "I haven't introduced myself yet, and it's the start of the game."} || 2025-03-27 14:49:28
+[INFO] Introduce JSON: {'reasoning': 'I need to introduce myself since no one else has mentioned my name yet. I will keep it casual and short.', 'output_text': "Hey, I'm D D."} || 2025-03-27 14:49:29
+[INFO] Stylized JSON: {'output_text': "Hey, I'm D D."} || 2025-03-27 14:49:29
+[INFO] DTR JSON: {'directed_at_me': False, 'havent_indroduced_self': True, 'accused': False, 'havent_answered_latest_icebreaker': False, 'speak_up': True, 'other': False, 'reasoning': "I haven't introduced myself yet, and it's the start of the game."} || 2025-03-27 14:50:01
+[INFO] DTR JSON: {'directed_at_me': False, 'havent_indroduced_self': True, 'accused': False, 'havent_answered_latest_icebreaker': False, 'speak_up': True, 'other': False, 'reasoning': "I haven't introduced myself yet, and it's important to participate in the introductions."} || 2025-03-27 14:50:17

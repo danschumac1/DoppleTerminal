@@ -1,0 +1,8 @@
+
+========================================
+New Log Session at 2025-03-27 13:01:28
+========================================
+[INFO] Stolen player_state: PlayerState(lobby_id='', first_name='', last_initial='', code_name='Donkey Kong', grade='', favorite_food='', favorite_animal='', hobby='', extra_info='', color_name='BLUE', color='\x1b[34m', ai_doppleganger=None) || 2025-03-27 13:01:28
+[INFO] DTR JSON: {'directed_at_me': False, 'havent_indroduced_self': True, 'accused': False, 'havent_answered_latest_icebreaker': False, 'speak_up': True, 'other': False, 'reasoning': "I haven't introduced myself yet, and it's the beginning of the game."} || 2025-03-27 13:01:37
+[INFO] Introduce JSON: {'reasoning': 'I need to introduce myself since the conversation is ongoing and no one has claimed my name yet.', 'output_text': "Hey, I'm Alice."} || 2025-03-27 13:01:38
+[INFO] Stylized JSON: {'output_text': "Hey, I'm Alice."} || 2025-03-27 13:01:38

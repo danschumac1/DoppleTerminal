@@ -6,10 +6,9 @@ init(autoreset=True)
 
 def play_intro(
         ss: ScreenState, 
-        ps: PlayerState,
         gs: GameState,
-
-        ) -> tuple[ScreenState, PlayerState, GameState]:
+        ps: PlayerState,
+        ) -> tuple[ScreenState, GameState, PlayerState, ]:
 
     """
     Displays the game introduction, rules, and flavor text, one section at a time.
@@ -79,4 +78,4 @@ Your job? Figure out who's real and who's not before it's too late.
         input(Fore.LIGHTBLACK_EX + Style.DIM + "\n(Press Enter to continue...)\n")
         time.sleep(0.1)
 
-    return ScreenState.SETUP, ps, gs
+    return ScreenState.SETUP, gs, ps

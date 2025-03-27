@@ -13,19 +13,19 @@ class ScreenState(Enum):
 
 @dataclass
 class PlayerState:
+    lobby_id: str
     first_name: str
     last_initial: str
     code_name: str
     grade: str
-    lobby_id: str
-    game_id: str
     favorite_food: str
     favorite_animal: str
     hobby: str
     extra_info: str
     color_name: str     # store as string name like "Red"
     color: str          # actual ANSI color code, e.g., Fore.RED
-    ai_doppleganger: Optional[AIPlayer] = None # this will leave a squiggle. That's okay.
+    ai_doppleganger: Optional[AIPlayer] = None # type: ignore # this will leave a squiggle. That's okay.
+    written_to_file: bool = False # Flag to indicate if the player has been written to a file
 
     def to_json_file(self):
         # Extract first name and last initial safely

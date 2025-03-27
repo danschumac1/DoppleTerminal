@@ -1,0 +1,16 @@
+
+========================================
+New Log Session at 2025-03-27 13:41:19
+========================================
+[INFO] Stolen player_state: PlayerState(lobby_id='1', first_name='Dan', last_initial='S', code_name='Fear', grade='8', favorite_food='Pizza', favorite_animal='Dog', hobby='Coding', extra_info='Just a debug bot.', color_name='YELLOW', color='\x1b[33m', ai_doppleganger=None) || 2025-03-27 13:41:19
+[INFO] DTR JSON: {'directed_at_me': False, 'havent_indroduced_self': True, 'accused': False, 'havent_answered_latest_icebreaker': False, 'speak_up': True, 'other': False, 'reasoning': "I haven't introduced myself yet, and it's important to engage in the introduction phase."} || 2025-03-27 13:41:33
+[INFO] Introduce JSON: {'reasoning': "I need to introduce myself since I'm the only one with my name. I also need to assert that I'm the real Dan if someone else claims to be me.", 'output_text': "Hey, I'm Dan S. Just to clarify, I'm the real Dan."} || 2025-03-27 13:41:33
+[INFO] Stylized JSON: {'output_text': "Hey, it's Dan S. Just to clear things up, I'm the real one here."} || 2025-03-27 13:41:34
+[INFO] DTR JSON: {'directed_at_me': True, 'havent_indroduced_self': True, 'accused': False, 'havent_answered_latest_icebreaker': False, 'speak_up': True, 'other': False, 'reasoning': 'DebugBot is accusing me of being a liar, and I need to defend myself and introduce myself.'} || 2025-03-27 13:41:49
+[INFO] Action Choice JSON: {'reasoning': "I need to respond to the accusation in a lighthearted way to show I'm not a threat and to keep the conversation friendly.", 'introduce': None, 'defend': True, 'accuse': None, 'joke': None, 'question': None, 'simple_phrase': None, 'other': None} || 2025-03-27 13:41:50
+[INFO] Defend JSON: {'accuser': 'DebugBot', 'accusation': "Fear you are such a liar, I'm Dan.", 'defense_choice': {'accuse': "Nah, you're the one acting weird. What's your deal?", 'deescalate': None, 'be_dismissive': None, 'counter_evidence': None, 'seek_alliance': None}, 'reasoning': 'I need to flip the suspicion back on DebugBot to protect myself.', 'output_text': 'Wait, why are you calling me a liar? You just joined, how do you even know me?'} || 2025-03-27 13:41:52
+[INFO] Stylized JSON: {'output_text': 'Wait, why you callin me a liar? You just joined, how you even know me?'} || 2025-03-27 13:41:53
+[INFO] DTR JSON: {'directed_at_me': True, 'havent_indroduced_self': True, 'accused': True, 'havent_answered_latest_icebreaker': False, 'speak_up': True, 'other': False, 'reasoning': "I need to respond because I've been accused of not being the real Dan, and I haven't introduced myself yet."} || 2025-03-27 13:42:10
+[INFO] Action Choice JSON: {'reasoning': "I need to assert my identity and clarify that I'm the real Dan to build trust and counter any suspicion.", 'introduce': True, 'defend': None, 'accuse': None, 'joke': None, 'question': None, 'simple_phrase': None, 'other': None} || 2025-03-27 13:42:12
+[INFO] Other JSON: {'output_text': "What are you talking about? I'm definitely the real Dan!", 'reasoning': 'Defending my identity helps establish trust and credibility, which is crucial in a social deduction game.'} || 2025-03-27 13:42:13
+[INFO] Stylized JSON: {'output_text': "What are you even saying? I'm totally the real Dan!"} || 2025-03-27 13:42:13

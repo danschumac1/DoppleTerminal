@@ -1,0 +1,8 @@
+
+========================================
+New Log Session at 2025-03-27 14:01:22
+========================================
+[INFO] Stolen player_state: PlayerState(lobby_id='3', first_name='Paige', last_initial='S', code_name='Meeko', grade='8', favorite_food='Nama Ramaen', favorite_animal='Goat', hobby='Cooking', extra_info='adf', color_name='CYAN', color='\x1b[36m', ai_doppleganger=None) || 2025-03-27 14:01:22
+[INFO] DTR JSON: {'directed_at_me': False, 'havent_indroduced_self': True, 'accused': False, 'havent_answered_latest_icebreaker': False, 'speak_up': True, 'other': False, 'reasoning': "I haven't introduced myself yet, and it's important to do so while everyone is introducing themselves."} || 2025-03-27 14:01:53
+[INFO] Introduce JSON: {'reasoning': 'Someone just introduced themselves as Paige S, so I need to clarify that I am the real Paige.', 'output_text': "Wait, I'm Paige S. There can only be one!"} || 2025-03-27 14:01:54
+[INFO] Stylized JSON: {'output_text': "Wait, I'm Paige S. There can only be one!"} || 2025-03-27 14:01:55

@@ -1,0 +1,16 @@
+[
+  {
+    "lobby_id": "4",
+    "first_name": "Dan",
+    "last_initial": "S",
+    "code_name": "Olaf",
+    "grade": "6",
+    "favorite_food": "Meat",
+    "favorite_animal": "adsf",
+    "hobby": "asdf",
+    "extra_info": "asdf",
+    "color_name": "RED",
+    "color": "\u001b[31m",
+    "ai_doppleganger": null
+  }
+]

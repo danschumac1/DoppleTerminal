@@ -1,0 +1,8 @@
+
+========================================
+New Log Session at 2025-03-27 14:53:53
+========================================
+[INFO] Stolen player_state: PlayerState(lobby_id='13', first_name='Paige', last_initial='S', code_name='Baymax', grade='8', favorite_food='asdf', favorite_animal='asdf', hobby='asdf', extra_info='asdf', color_name='YELLOW', color='\x1b[33m', ai_doppleganger=None, written_to_file=False) || 2025-03-27 14:53:53
+[INFO] DTR JSON: {'directed_at_me': False, 'havent_indroduced_self': True, 'accused': False, 'havent_answered_latest_icebreaker': False, 'speak_up': True, 'other': False, 'reasoning': "I haven't introduced myself yet, and it's important to do so since the game has just started."} || 2025-03-27 14:54:04
+[INFO] Introduce JSON: {'reasoning': 'Mufasa just claimed to be me, so I need to assert that I am the real Paige.', 'output_text': "Wait, I'm Paige! That's my name."} || 2025-03-27 14:54:05
+[INFO] Stylized JSON: {'output_text': "Wait, I'm Paige! That's my name."} || 2025-03-27 14:54:06

@@ -21,7 +21,7 @@ import sys
 sys.path.append("../../")
 from utils.states import ScreenState, PlayerState, GameState
 from utils.constants import COLOR_DICT, NAMES_PATH, NAMES_INDEX_PATH, COLORS_PATH, COLORS_INDEX_PATH
-from utils.sequential_assigner import SequentialAssigner
+from utils.file_io import SequentialAssigner
 
 # TODO -> use the sequential assigner to assign a code name and color to the AI player
 # TODO -> use the AI player to play the game
@@ -195,7 +195,6 @@ class AIPlayer:
             last_initial=player_state_to_steal.last_initial,
             grade=player_state_to_steal.grade,
             lobby_id=player_state_to_steal.lobby_id,
-            game_id=player_state_to_steal.game_id,
             favorite_food=player_state_to_steal.favorite_food,
             favorite_animal=player_state_to_steal.favorite_animal,
             hobby=player_state_to_steal.hobby,
