@@ -48,7 +48,4 @@ BLANK_GS = GameState(
     players=[],
     players_voted_off=[],
     last_vote_outcome="",
-    textual_summary="",
-    chat_this_round=[],
-    all_chat=[]
 )

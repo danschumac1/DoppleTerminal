@@ -22,9 +22,9 @@ class PlayerState:
     favorite_animal: str
     hobby: str
     extra_info: str
-    color_name: str     # store as string name like "Red"
-    color: str          # actual ANSI color code, e.g., Fore.RED
-    ai_doppleganger: Optional[AIPlayer] = None # type: ignore # this will leave a squiggle. That's okay.
+    color_name: str     
+    color: str          
+    ai_doppleganger: Optional[AIPlayer] = None # type: ignore
     written_to_file: bool = False # Flag to indicate if the player has been written to a file
 
     def to_json_file(self):
@@ -45,6 +45,3 @@ class GameState:
     players: list                   #TODO determine typing of list
     players_voted_off: List[str]    # List of players voted off
     last_vote_outcome: str          # The outcome of the last vote
-    textual_summary: str            # A human-readable summary of the game's progression
-    chat_this_round: List[str]      # Chat messages from this round
-    all_chat: List[str]             # All chat messages from the game
