@@ -1,8 +1,0 @@
-
-========================================
-New Log Session at 2025-03-27 14:39:02
-========================================
-[INFO] Stolen player_state: PlayerState(lobby_id='10', first_name='Dan', last_initial='S', code_name='Aladdin', grade='8', favorite_food='asdf', favorite_animal='asdf', hobby='asdf', extra_info='asdf', color_name='CYAN', color='\x1b[36m', ai_doppleganger=None, written_to_file=False) || 2025-03-27 14:39:02
-[INFO] DTR JSON: {'directed_at_me': False, 'havent_indroduced_self': True, 'accused': False, 'havent_answered_latest_icebreaker': False, 'speak_up': True, 'other': False, 'reasoning': "Toon Link is introducing themselves, and since I'm also a player, I should introduce myself as well."} || 2025-03-27 14:39:12
-[INFO] Introduce JSON: {'reasoning': "I need to introduce myself since the game has started and it's my turn.", 'output_text': "Hey, I'm Dan S."} || 2025-03-27 14:39:13
-[INFO] Stylized JSON: {'output_text': "Hey, I'm Dan S. Just testing joining the lobby mid chat."} || 2025-03-27 14:39:14

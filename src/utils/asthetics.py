@@ -4,6 +4,12 @@ from prompt_toolkit.shortcuts import print_formatted_text
 from utils.constants import COLOR_DICT
 from utils.states import GameState
 
+def get_color_for_code_name(code_name: str, gs: GameState) -> str:
+    for player in gs.players:
+        if player.code_name == code_name:
+            return player.color_name
+    raise ValueError(f"Unknown code_name in chat: '{code_name}'")
+
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 

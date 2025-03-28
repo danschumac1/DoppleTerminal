@@ -1,8 +1,0 @@
-
-========================================
-New Log Session at 2025-03-27 14:01:20
-========================================
-[INFO] Stolen player_state: PlayerState(lobby_id='3', first_name='Meat', last_initial='G', code_name='Ice Climbers', grade='7', favorite_food='Liver', favorite_animal='dog', hobby='running', extra_info='asdf', color_name='MAGENTA', color='\x1b[35m', ai_doppleganger=None) || 2025-03-27 14:01:20
-[INFO] DTR JSON: {'directed_at_me': False, 'havent_indroduced_self': True, 'accused': False, 'havent_answered_latest_icebreaker': False, 'speak_up': True, 'other': False, 'reasoning': "I haven't introduced myself yet, and it's important to do so while everyone is introducing themselves."} || 2025-03-27 14:02:07
-[INFO] Introduce JSON: {'reasoning': "Wall-E just introduced me, so I need to respond and assert that I'm the real Meat G.", 'output_text': "Actually, I'm Meat G. That's my name."} || 2025-03-27 14:02:08
-[INFO] Stylized JSON: {'output_text': "Actually, I'm Meat G. That's my name."} || 2025-03-27 14:02:08

@@ -1,4 +1,5 @@
 import time
+from utils.logging_utils import MasterLogger
 from utils.states import ScreenState, PlayerState, GameState
 from utils.asthetics import print_color
 
@@ -11,6 +12,8 @@ def play_intro(
     """
     Displays the game introduction, rules, and flavor text, one section at a time.
     """
+    master_logger = MasterLogger.get_instance()
+    master_logger.log("Starting intro screen...")
     intro_sections = [
         ("CYAN", """
 ====================================================================

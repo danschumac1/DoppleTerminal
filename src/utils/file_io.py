@@ -12,11 +12,11 @@ def init_chat_log(path: str):
         with open(path, "w", encoding="utf-8") as f:
             f.write("")  # Start fresh
 
-def append_message(path:str, message: str):
+def append_message(path: str, message: str) -> None:
     with open(path, "a", encoding="utf-8") as f:
         f.write(message + "\n")
 
-def read_new_messages(path, last_line: int) -> Tuple[List[str], int]:
+def read_new_messages(path: str, last_line: int) -> Tuple[List[str], int]:
     with open(path, "r", encoding="utf-8") as f:
         lines = f.readlines()
     new_lines = lines[last_line:]

@@ -4,11 +4,18 @@ from setup import collect_player_data
 from intro_screen import play_intro
 from game import play_game
 from score import score_screen
-from utils.constants import BLANK_GS, BLANK_PS
 import inspect
 
-async def main():
+# our functions
+from utils.constants import BLANK_GS, BLANK_PS
+from utils.logging_utils import MasterLogger
 
+async def main():
+    master_logger = MasterLogger(
+        init=True,
+        clear=False,
+        log_path="./logs/_master.log"
+    )
 
     state_handler = {
         ScreenState.INTRO: play_intro,

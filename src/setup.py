@@ -1,5 +1,6 @@
 import os
 from typing import Tuple
+from utils.logging_utils import MasterLogger
 from utils.states import GameState, ScreenState, PlayerState
 from utils.file_io import SequentialAssigner
 from utils.constants import (
@@ -90,7 +91,8 @@ def collect_player_data(
         gs: GameState,
         ps: PlayerState,
         ) -> Tuple[ScreenState, GameState, PlayerState]:
-
+    master_logger = MasterLogger.get_instance()
+    master_logger.log("Starting Setup screen...")
     setup = PlayerSetup()
     ps, next_state = setup.run()
     gs.players.append(ps)
