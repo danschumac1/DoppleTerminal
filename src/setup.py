@@ -14,6 +14,11 @@ from datetime import datetime # , timedelta
 from time import sleep
 
 class PlayerSetup:
+    """
+    Handles the player setup process, including collecting player information,
+    assigning a code name and color, and creating a PlayerState object.
+    """
+
     def __init__(
         self,
         names_path=NAMES_PATH,
@@ -21,11 +26,26 @@ class PlayerSetup:
         # colors_path=COLORS_PATH,
         # colors_index_path=COLORS_INDEX_PATH
     ):
+        """
+        Initializes the PlayerSetup object with necessary paths for name and color assignment.
+
+        Args:
+            names_path (str): Path to the file containing player names.
+            names_index_path (str): Path to the file tracking the current name index.
+            colors_path (str): Path to the file containing color names.
+            colors_index_path (str): Path to the file tracking the current color index.
+        """
         self.data = {}
         self.code_name_assigner = SequentialAssigner(names_path, names_index_path, "code_names")
         # self.color_assigner = SequentialAssigner(colors_path, colors_index_path, "colors")
 
     def assign_code_name(self) -> str:
+        """
+        Assigns a unique code name to the player.
+
+        Returns:
+            str: A unique code name.
+        """
         return self.code_name_assigner.assign()
 
     # def assign_color(self) -> str:
@@ -93,6 +113,7 @@ class PlayerSetup:
         gs.player_path = os.path.join(lobby_path, "players.json")
         gs.number_of_human_players = self.data["number_of_human_players"]
 
+        # Create the PlayerState object
         ps = PlayerState(
             lobby_id=self.data["lobby"],
             first_name=self.data["first_name"],
