@@ -1,171 +1,174 @@
-import os
+from datetime import datetime
 import asyncio
 from prompt_toolkit.shortcuts import PromptSession, print_formatted_text
 from prompt_toolkit.formatted_text import ANSI
 
 from utils.asthetics import (
-    format_gm_message, get_color_for_code_name, print_color, clear_screen)
-from utils.logging_utils import MasterLogger, StandAloneLogger
+    format_gm_message, 
+    # get_color_for_code_name, print_color
+    )
+from utils.logging_utils import MasterLogger
 from utils.states import GameState, ScreenState, PlayerState
-from utils.constants import DEBUG_PS
-from utils.chatbot.ai import AIPlayer
+from utils.constants import ROUND_DURATION
 
 from utils.file_io import (
-    append_message, read_new_messages, init_chat_log, 
-    save_player_to_lobby_file, load_players_from_lobby
+    append_message, read_new_messages, load_players_from_lobby
 )
 
-async def refresh_messages_loop(chat_log_path: str, gs: GameState, ps: PlayerState, delay: float = 0.5):
+# Helper function to print an icebreaker question
+def ask_icebreaker(gs):
+    intro_msg = format_gm_message(gs.icebreakers[0])
+    gs.ice_asked += 1
+    gs.icebreakers.pop(0)
+    append_message(gs.chat_log_path, intro_msg)
+
+# Countdown timer with synchronized start time
+async def countdown_timer(duration: int, gs: GameState, ps: PlayerState):
+    elapsed = (datetime.now() - ps.starttime).total_seconds()
+    remaining = max(0, duration - int(elapsed))
+
+    await asyncio.sleep(remaining)
+    gs.round_complete = True
+
+    if ps.timekeeper:
+        # print_color(format_gm_message("Time's up! Moving to the next round."), "YELLOW")
+        print(format_gm_message("Time's up! Moving to the next round."))
+
+# Refresh the chat log and print new messages
+async def refresh_messages_loop(
+    chat_log_path: str, gs: GameState, ps: PlayerState, delay: float = 0.5):
     last_line = 0
+    session = PromptSession()
     while True:
         await asyncio.sleep(delay)
-        new_msgs, last_line = read_new_messages(chat_log_path, last_line)
-        if new_msgs:
-            gs.players = load_players_from_lobby(ps.lobby_id)
-            formatted_msgs = []
-            for msg in new_msgs:
-                if "GAME MASTER" in msg or "*****" in msg:
-                    formatted_msgs.append(print_color(msg, "YELLOW", print_or_return="return"))
-                else:
-                    code_name = msg.split(":", 1)[0]
-                    try:
-                        color = get_color_for_code_name(code_name, gs)
-                        formatted_msgs.append(print_color(msg, color, print_or_return="return"))
-                    except:
-                        continue  # Ignore unknown code names for now
-            print_formatted_text(ANSI("\n".join(formatted_msgs)))
+        try:
+            with open(chat_log_path, "r", encoding="utf-8") as f:
+                # Read all lines from the file
+                lines = f.readlines()
+                # Extract only new lines since the last read
+                new_msgs = lines[last_line:]
+                # Update the last line number
+                last_line = len(lines)
 
-async def ai_loop(chat_log_path, ps, master_logger, sa_logger, delay=0.25):
+                if new_msgs:
+                    gs.players = load_players_from_lobby(gs)
+                    formatted_msgs = []
+                    for msg in new_msgs:
+                        if "GAME MASTER" in msg or "*****" in msg:
+                            formatted_msgs.append(format_gm_message(msg))
+                        else:
+                            # code_name = msg.split(":", 1)[0]
+                            try:
+                                formatted_msgs.append(msg.strip())  # Strip to remove extra newlines
+                            except Exception as e:
+                                print(f"Error processing message: {msg}, Error: {e}")
+                                continue
+                    # Print all formatted messages at once to prevent overlapping
+                    print("\n".join(formatted_msgs))
+                    # Refresh the prompt after printing AI messages
+                    session.app.invalidate()
+        except Exception as e:
+            print(f"Error reading messages: {e}")
+
+
+
+# AI loop to handle AI responses
+async def ai_loop(ps: PlayerState, gs, master_logger: MasterLogger, delay: float = 0.25) -> None:
     last_message_count = 0
     ai_code_name = ps.ai_doppleganger.player_state.code_name
 
-    while True:
-        new_messages, new_message_count = read_new_messages(chat_log_path, last_message_count)
+    try:
+        while True:
+            full_chat_list, _, num_new_messages = read_new_messages(gs.chat_log_path, last_message_count)
 
-        if new_messages:
-            full_log, _ = read_new_messages(chat_log_path, 0)
+            if num_new_messages:
+                last_line = full_chat_list[-1] if full_chat_list else ""
+                if last_line.startswith(f"{ai_code_name}:"):
+                    await asyncio.sleep(delay)
+                    last_message_count = num_new_messages
+                    continue
 
-            last_line = full_log[-1] if full_log else ""
-            if last_line.startswith(f"{ai_code_name}:"):
-                # 🚫 Skip if the AI just spoke
-                await asyncio.sleep(delay)
-                last_message_count = new_message_count
-                continue
+                last_message_count = num_new_messages
 
-            # ✅ AI may respond
-            ai_response = ps.ai_doppleganger.decide_to_respond(full_log)
+                ai_response = ps.ai_doppleganger.decide_to_respond(full_chat_list)
 
-            if ai_response and not ai_response.startswith("Wait for"):
-                ai_msg = f"{ai_code_name}: {ai_response}"
-                append_message(chat_log_path, ai_msg)
-                master_logger.log(f"[AI] {ai_code_name} responded: {ai_response}")
-                sa_logger.info(f"[AI] {ai_code_name} responded: {ai_response}")
+                if ai_response and not ai_response.startswith("Wait for"):
+                    ai_msg = f"{ai_code_name}: {ai_response}"
+                    append_message(gs.chat_log_path, ai_msg)
+                    master_logger.log(f"[AI] {ai_code_name} responded: {ai_response}")
+                    ps.logger.info(f"[AI] {ai_code_name} responded: {ai_response}")
 
-            last_message_count = new_message_count
+            await asyncio.sleep(delay)
 
-        await asyncio.sleep(delay)
-
-
-
-async def user_input_loop(session, chat_log_path, ps, master_logger, sa_logger):
-    while True:
-        user_input = await session.prompt_async(
-            ANSI(f"{ps.color}{ps.code_name}\x1b[0m: ")
-        )
-
-        if user_input.strip().lower() == "exit":
-            print_formatted_text(ANSI(format_gm_message("Game exited early.")))
-            raise asyncio.CancelledError  # Exit all loops
-
-        player_msg = f"{ps.code_name}: {user_input}"
-        append_message(chat_log_path, player_msg)
-        master_logger.log(f"[User] {ps.code_name} sent: {user_input}")
-        sa_logger.info(f"[User] {ps.code_name} sent: {user_input}")
+    except asyncio.CancelledError:
+        print(f"AI loop for {ai_code_name} cancelled.")
+    finally:
+        print(f"AI loop for {ai_code_name} terminated gracefully.")
 
 
-async def play_game(
-        ss: ScreenState, gs: GameState, ps: PlayerState = None) \
-        -> tuple[ScreenState, GameState, PlayerState]:
-    
-    # --- Debug fallback ---
-    if ps is None or ps.code_name == "":
-        print_color("AUTO DEBUG MODE ENABLED — using fallback player.", "RED")
-        ps = DEBUG_PS
+# Handle user input
+# Handle user input
+async def user_input_loop(session, chat_log_path, gs, ps, master_logger):
+    try:
+        while True:
+            try:
+                # Properly await the async prompt
+                user_input = await session.prompt_async(f"{ps.code_name}: ")
+                if user_input == "exit":
+                    return ScreenState.SCORE, ps, gs
+                if ":" in user_input.strip().lower():
+                    print("Invalid input. Please do not include a colon in your message.")
+                    continue
 
+                player_msg = f"{ps.code_name}: {user_input}"
+                append_message(chat_log_path, player_msg)
+                master_logger.log(f"[User] {ps.code_name} sent: {user_input}")
+                ps.logger.info(f"[User] {ps.code_name} sent: {user_input}")
+            except KeyboardInterrupt:
+                print("\nUser input interrupted. Exiting input loop.")
+                break
+            except Exception as e:
+                print(f"Error receiving input: {e}")
+    except asyncio.CancelledError:
+        print("\nUser input loop cancelled gracefully.")
+
+        
+
+# Main game loop
+async def play_game(ss: ScreenState, gs: GameState, ps: PlayerState) -> tuple[ScreenState, GameState, PlayerState]:
     session = PromptSession()
     master_logger = MasterLogger.get_instance()
-    if not ps.written_to_file:
-        clear_logger = True
-        init_logger = True
-        clear_screen()
-        ps.written_to_file = True
-        save_player_to_lobby_file(ps)
-        master_logger.log(f"Player {ps.code_name} saved to lobby file.")
-    else:
-        clear_logger = False
-        init_logger = False
 
-    sa_logger = StandAloneLogger(
-        log_path=f"./data/runtime/lobbies/lobby_{ps.lobby_id}/{ps.code_name}_game_log.log",
-        clear=clear_logger,
-        init=init_logger
-)
+    refresh_task = asyncio.create_task(refresh_messages_loop(gs.chat_log_path, gs, ps))
+    round_duration = ROUND_DURATION
+    timer_task = asyncio.create_task(countdown_timer(round_duration, gs, ps))
 
+    # print(f"DEBUG: Player Code Name: {ps.code_name}")
+    # print(f"DEBUG: Player Color: {ps.color_name}")
+    # print(f"DEBUG: Player Color Asci: {ps.color_asci}")
 
-
-    # --- Load all players so far ---
-    active_players = load_players_from_lobby(ps.lobby_id)
-
-    # --- Make sure local player is in memory ---
-    if ps.code_name not in [p.code_name for p in gs.players]:
-        gs.players.append(ps)
-
-    # --- Assign AI if needed ---
-    if ps.ai_doppleganger is None:
-        ps.ai_doppleganger = AIPlayer(
-            player_to_steal=ps,
-            players_code_names=[p.code_name for p in gs.players]
-        )
-        ai_ps = ps.ai_doppleganger.player_state
-        ai_ps.written_to_file = True
-
-        if ai_ps.code_name not in [p.code_name for p in active_players]:
-            save_player_to_lobby_file(ai_ps)
-
-        gs.players.append(ai_ps)
-        master_logger.log(f"AI player {ai_ps.code_name} created and added to the game.")
-
-    # --- Reload if needed ---
-    if active_players != gs.players:
-        gs.players = load_players_from_lobby(ps.lobby_id)
-        ps.ai_doppleganger.players_code_names = [p.code_name for p in gs.players]
-        ps.player_code_names = [p.code_name for p in gs.players]
-        new_code_names = [
-            p.code_name for p in gs.players if p.code_name not in ps.player_code_names]
-        master_logger.log(
-            f"New players detected: Adding {', '.join(new_code_names)} to active players.")
-
-    # --- Setup chat log ---
-    chat_log_path = f"./data/runtime/lobbies/lobby_{ps.lobby_id}/chat_log.txt"
-    if not os.path.exists(chat_log_path):
-        init_chat_log(chat_log_path)
-        intro_msg = format_gm_message(
-            "Welcome to Dopplebot! Everyone, please introduce yourselves.")
-        append_message(chat_log_path, intro_msg)
-        master_logger.log("Initialized chat log and added intro message.")
-
-    # --- Start background message refresher
-    refresh_task = asyncio.create_task(refresh_messages_loop(chat_log_path, gs, ps))
+    # print(f"DEBUG:  AI Code Name: {ps.ai_doppleganger.player_state.code_name}")
+    # print(f"DEBUG:  AI Color Name: {ps.ai_doppleganger.player_state.color_name}")
+    # print(f"DEBUG:  AI Color Asci: {ps.ai_doppleganger.player_state.color_asci}")
 
     try:
-        await asyncio.gather(
-            ai_loop(chat_log_path, ps, master_logger, sa_logger),
-            user_input_loop(session, chat_log_path, ps, master_logger, sa_logger)
+        _, pending = await asyncio.wait(
+            [
+                asyncio.create_task(ai_loop( ps,gs, master_logger)),
+                asyncio.create_task(user_input_loop(session, gs.chat_log_path,gs, ps , master_logger)),
+                timer_task
+            ],
+            return_when=asyncio.FIRST_COMPLETED
         )
+
+        for task in pending:
+            task.cancel()
+
     except asyncio.CancelledError:
         pass
     finally:
         refresh_task.cancel()
+        timer_task.cancel()
         await asyncio.sleep(0.1)
 
-    return ScreenState.SCORE, gs, ps
+    return ScreenState.CHAT, gs, ps

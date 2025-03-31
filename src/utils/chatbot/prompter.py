@@ -156,3 +156,18 @@ class OpenAIPrompter(Prompter):
 
         return final_resp
 
+    #     finally:
+    #         if client:
+    #             try:
+    #                 client.close()
+    #             except Exception as e:
+    #                 print(f"Error closing client: {e}")
+    # def __del__(self):
+    #     try:
+    #         if hasattr(self, 'client'):
+    #             self.client.close()
+    #             print("OpenAI client closed.")
+    #     except Exception as e:
+    #         print(f"Error during client cleanup: {e}")
+
+

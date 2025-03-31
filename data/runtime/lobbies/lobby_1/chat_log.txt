@@ -1,8 +1,2 @@
-[33m**************************************************[0m
-[33mGAME MASTER: Welcome to Dopplebot! Everyone, please introduce yourselves.[0m
-[33m**************************************************[0m
-Samus: Yo what’s up everyone, I’m Pegasus! Can’t wait to dive into this game and see who’s got the brains to outsmart the rest. Let’s make it a blast!
-Pegasus: This is Dan What is up Samus.. I think you are a bit confused no? 
-Samus: Yo, what's up everyone! I'm Skywalker! Can't wait to see how this goes down. Let's watch each other's backs and have a blast!
-Pegasus: what is happening...
-Samus: Yo, what's up everyone! I'm Han Solo! Can't wait to see how this goes down. Let's keep it chill and figure out who's who!
+SNAKE: Hello this is Dan
+COW: cannot pickle '_thread.RLock' object

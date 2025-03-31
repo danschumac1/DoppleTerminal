@@ -1,7 +1,7 @@
 import time
 from utils.logging_utils import MasterLogger
 from utils.states import ScreenState, PlayerState, GameState
-from utils.asthetics import print_color
+# from utils.asthetics import print_color
 
 def play_intro(
     ss: ScreenState, 
@@ -75,8 +75,10 @@ Your job? Figure out who's real and who's not before it's too late."""),
     ]
 
     for color, paragraph in intro_sections:
-        print(print_color(paragraph, color, print_or_return="return"))
-        input(print_color("\n(Press Enter to continue...)\n", "CYAN", print_or_return="return"))
+        # print(print_color(paragraph, color, print_or_return="return"))
+        # input(print_color("\n(Press Enter to continue...)\n", "CYAN", print_or_return="return"))
+        print(paragraph, color)
+        input("\n(Press Enter to continue...)\n")
         time.sleep(0.1)
 
     return ScreenState.SETUP, gs, ps
